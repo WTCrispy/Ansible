@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mon beau site web</title>
+	</head>
+	<body>
+		{% if env == "dev" %}
+		<p>Bienvenue sur mon site en dev, créé avec Ansible!!</p>
+		{% elif env == "int" %}
+		<p>Bienvenue sur mon site en int, créé avec Ansible!!</p>
+		{% endif %}
+	</body>
+</html>

@@ -1,0 +1,29 @@
+---
+- name: apache2
+  apt:
+    name: apache2=2.4.29
+    state: present
+    update_cache: yes
+  when: ansible_facts['os_family'] == "Ubuntu" and ansible_facts['ansible_distribution_version'] == "18.04"
+
+- name: demarrage du service apache
+  service:
+    name: apache2
+    state: started
+  when: ansible_facts['os_family'] == "Ubuntu" and ansible_facts['ansible_distribution_version'] == "18.04"
+
+- name: verification apache fonctionnel
+  shell: "ps aux | grep apache"
+  register: recap
+  when: ansible_facts['os_family'] == "Ubuntu" and ansible_facts['ansible_distribution_version'] == "18.04"
+
+- name: Etat du service
+  debug:
+   msg: "{{recap}}"
+
+- name: copier le fichier de conf
+  template:
+      src: apache2.conf
+      dest: /etc/apache2/apache.conf
+  notify:
+      - Restart Apache

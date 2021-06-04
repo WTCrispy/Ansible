@@ -1,0 +1,4 @@
+---
+username2: "Ferro"
+password2: "{{'tata' | password_hash('sha512')}}"
+

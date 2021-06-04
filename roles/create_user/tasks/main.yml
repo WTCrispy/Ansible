@@ -1,0 +1,11 @@
+---
+- name: "Création user"
+  user:
+     name: "{{item.name}}"
+     state: present
+     groups: "{{item.groups}}"
+     password: "{{item.password}}"
+  with_items:
+     - name: "{{username}}"
+       groups: root
+       password: "{{password1}}"

@@ -1,0 +1,27 @@
+---
+- name: php
+  apt:
+    name: php
+    state: present
+    #Update_cache: yes
+    #when: ansible_facts['os_family'] == "Ubuntu" and ansible_facts['ansible_distribution_version'] == "18.04"
+
+  #- name: demarrage du service php
+  #service: 
+  # name: php7
+  # state: started
+
+    #- name: verification php fonctionnel
+    #shell: "ps aux | grep php"
+    # register: recap
+
+    #- name: Etat du service
+    #debug:
+    #msg: "{{recap}}"
+
+   #- name: copier le fichier de conf
+   #template:
+   #  src: apache2.conf
+   #  dest: /etc/apache2/apache.conf
+   #notify:
+   #  - Restart Apache

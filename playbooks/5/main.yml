@@ -1,0 +1,21 @@
+---
+- hosts: webserver
+  remote_user: root
+  vars_files:
+    - "../vars/{{env}}_vars.yml"      
+    - "../vars/{{env}}_vault.yml"
+  tasks:
+    - name: "Ajout d'utilisateurs"
+      user:
+        username: "{{item.username}}"
+        password: "{{item.password }}"
+      loop:
+        - username: "{{username1}}"
+          password: "{{password1}}"
+        - username: "{{username2}}"
+          password: "{{password2}}"
+        
+    - name: "debug"
+      debug: 
+        msg: "{{recap}}"
+    - when: ansible_distribution == "ubuntu"

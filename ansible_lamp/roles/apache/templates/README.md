@@ -1,0 +1,2 @@
+---
+Configuration basique apache2
